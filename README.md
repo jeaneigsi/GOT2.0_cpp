@@ -21,7 +21,7 @@ pip install llama-cpp-python
 
 ### How used the repo :
 
-The tensors files are images elbeddings in pytorch format. if you want :
+The tensors files are images embeddings in pytorch format. if you want :
 **Run inference**
 ```bash
 python main.py
@@ -69,4 +69,4 @@ change to :
 This change is necessary to avoid errors when the quantization script attempts to locate the model architecture type.
 
 # **Mention**
-This fork is based of original repos from [GOT-OCR-Inference](https://github.com/1694439208/GOT-OCR-Inference). Kudos to him for gguf implementation
+This fork is based on original repos from [GOT-OCR-Inference](https://github.com/1694439208/GOT-OCR-Inference). Kudos to him for gguf implementation
