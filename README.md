@@ -1,39 +1,54 @@
 # GOT-OCR-Inference
-研究GOT-OCR-项目落地加速，不限语言
 
-> ## 研究1:
+Research on accelerating the **GOT-OCR** project deployment, supporting multiple languages.
+
+## Research 1:
 - [GOT-OCR2.0](https://github.com/Ucas-HaoranWei/GOT-OCR2.0)
-- [llama-cpp-python](https://github.com/Ucas-HaoranWei/GOT-OCR2.0](https://github.com/abetlen/llama-cpp-python))
-- [release-exe](https://huggingface.co/kaifeise/GOT-gguf/tree/main)
+- [llama-cpp-python](https://github.com/abetlen/llama-cpp-python)
+- [Release-exe (GOT weights)](https://huggingface.co/kaifeise/GOT-gguf/tree/main)
 
-> ## release
-- 基础sdk包： https://pan.baidu.com/s/10Lo-yY_ZNW7gs0Gd9hiaMw 提取码: ie4n
-- 更新包: https://pan.baidu.com/s/1pw2JRQZjBZYo4UU-7UNuhQ 提取码: 5x3d
-- 下载基础sdk包解压，然后下载更新包覆盖解压，然后  **双击启动.bat** 启动
+## Releases:
+- **Base SDK package**: [Download here](https://pan.baidu.com/s/10Lo-yY_ZNW7gs0Gd9hiaMw) (Code: ie4n)
+- **Update package**: [Download here](https://pan.baidu.com/s/1pw2JRQZjBZYo4UU-7UNuhQ) (Code: 5x3d)
 
-```
-代码里直接使用
-<|im_start|>system
-You should follow the instructions carefully and explain your answers in detail.<|im_end|><|im_start|>user
-<img></img>
-OCR: <|im_end|><|im_start|>assistant提示词是为了测试代码是否正常，主要是为了测试嵌入向量
+### Instructions:
+1. Download and extract the **Base SDK package**.
+2. Download the **Update package** and extract it to replace/overwrite the files in the base package.
+3. **Double-click `启动.bat`** to start the application.
 
+```bash
 pip install llama-cpp-python
-研究GOT-OCR2.0落地加速，经过查询llama-cpp-python和llama的源码demo和issues，暂时实现了可能的推理，因为他官方就没说过也没找到如何嵌入自定义向量
+```
+**Code Usage**:
+The following code snippet is a basic demonstration for testing if the model embedding works properly:  
+```bash
+<|im_start|>system
+You should follow the instructions carefully and explain your answers in detail.<|im_end|>
+<|im_start|>user
+<img></img>
+OCR: <|im_end|><|im_start|>assistant
+```
 
-量化后的模型，不保证对，因为是直接基于官方提供的模型做的量化，可能会有got的层被量化进来
-通过百度网盘分享的文件：None-619M-123-F16.gguf
-链接：https://pan.baidu.com/s/1nWkMVrwPcb1qjkGTSz4g6g 
-提取码：3zop
+`Notes`:
+GOT-OCR2.0 deployment acceleration research was conducted using `llama-cpp-python`.
+The source code and documentation for llama-cpp-python and llama were referenced to implement possible inference solutions.
+No official documentation exists for embedding custom vectors, and this implementation is based on the available knowledge.  
 
-如果要自己量化可以参考使用我修改的*convert_hf_to_gguf.py*脚本
-config.json文件的
+#### Model Quantization:
+The quantized version of the model is provided here, but it is not guaranteed to be completely correct since it’s based on the official model's quantization. Some layers of the GOT model may have been included in the quantization by mistake.
+
+Quantized model weights: Download here (Code: 3zop)
+If you want to perform the quantization yourself, refer to the modified convert_hf_to_gguf.py script. Make sure to update the config.json file as follows:
+
+```bash
 "architectures": [
   "GOTQwenForCausalLM"
-],
-要改成
+]
+```
+change to :
+```bash
 "architectures": [
   "Qwen2ForCausalLM"
-],
-否则量化脚本找不到模型结构类型
+]
 ```
+This change is necessary to avoid errors when the quantization script attempts to locate the model architecture type.
