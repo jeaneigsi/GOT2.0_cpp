@@ -1,6 +1,6 @@
 # GOT-OCR-Inference
 
-Research on accelerating the **GOT-OCR** project deployment, supporting multiple languages.
+Research on accelerating the **GOT-OCR** project deployment, supporting multiple languages on cpu
 
 ## Research 1:
 - [GOT-OCR2.0](https://github.com/Ucas-HaoranWei/GOT-OCR2.0)
@@ -8,10 +8,10 @@ Research on accelerating the **GOT-OCR** project deployment, supporting multiple
 - [Release-exe (GOT weights)](https://huggingface.co/kaifeise/GOT-gguf/tree/main)
 
 ## Releases:
-- **Base SDK package**: [Download here](https://pan.baidu.com/s/10Lo-yY_ZNW7gs0Gd9hiaMw) (Code: ie4n)
+- **Base SDK package**: [Download here](https://pan.baidu.com/s/10Lo-yY_ZNW7gs0Gd9hiaMw) (Code password: ie4n)
 - **Update package**: [Download here](https://pan.baidu.com/s/1pw2JRQZjBZYo4UU-7UNuhQ) (Code: 5x3d)
 
-### Instructions:
+### Instructions to install from cli:
 1. Download and extract the **Base SDK package**.
 2. Download the **Update package** and extract it to replace/overwrite the files in the base package.
 3. **Double-click `启动.bat`** to start the application.
@@ -52,3 +52,6 @@ change to :
 ]
 ```
 This change is necessary to avoid errors when the quantization script attempts to locate the model architecture type.
+
+**Mention**
+This fork is based of original repos from [GOT-OCR-Inference](https://github.com/1694439208/GOT-OCR-Inference). Kudos to him for gguf implementation
