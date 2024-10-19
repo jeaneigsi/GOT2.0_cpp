@@ -2,7 +2,7 @@
 
 Research on accelerating the **GOT-OCR** project deployment, supporting multiple languages on cpu
 
-## Research 1:
+## Links 1:
 - [GOT-OCR2.0](https://github.com/Ucas-HaoranWei/GOT-OCR2.0)
 - [llama-cpp-python](https://github.com/abetlen/llama-cpp-python)
 - [Release-exe (GOT weights)](https://huggingface.co/kaifeise/GOT-gguf/tree/main)
@@ -14,11 +14,26 @@ Research on accelerating the **GOT-OCR** project deployment, supporting multiple
 ### Instructions to install from cli:
 1. Download and extract the **Base SDK package**.
 2. Download the **Update package** and extract it to replace/overwrite the files in the base package.
-3. **Double-click `启动.bat`** to start the application.
-
-```bash
+3. **Double-click `启动.bat`** to start the application. Run :
+ ```bash
 pip install llama-cpp-python
 ```
+
+### How used the repo :
+
+The tensors files are images elbeddings in pytorch format. if you want :
+**Run inference**
+```bash
+python main.py
+```
+
+**Convert in gguf yourself (any quantizations types)** :
+Update model path, and other args :
+```bash
+python convert_hf_to_gguf.py
+```
+
+
 **Code Usage**:
 The following code snippet is a basic demonstration for testing if the model embedding works properly:  
 ```bash
@@ -37,7 +52,7 @@ No official documentation exists for embedding custom vectors, and this implemen
 #### Model Quantization:
 The quantized version of the model is provided here, but it is not guaranteed to be completely correct since it’s based on the official model's quantization. Some layers of the GOT model may have been included in the quantization by mistake.
 
-Quantized model weights: Download here (Code: 3zop)
+Quantized model weights: Download here : [Release-exe (GOT weights)](https://huggingface.co/kaifeise/GOT-gguf/tree/main)  (Code: 3zop)
 If you want to perform the quantization yourself, refer to the modified convert_hf_to_gguf.py script. Make sure to update the config.json file as follows:
 
 ```bash
@@ -53,5 +68,5 @@ change to :
 ```
 This change is necessary to avoid errors when the quantization script attempts to locate the model architecture type.
 
-**Mention**
+# **Mention**
 This fork is based of original repos from [GOT-OCR-Inference](https://github.com/1694439208/GOT-OCR-Inference). Kudos to him for gguf implementation
